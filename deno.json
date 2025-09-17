@@ -4,7 +4,11 @@
     "demo:firestore": "deno run -A --env --node-modules-dir firestore_demo.ts",
     "demo:firestore:emu": "USE_FIREBASE_EMULATOR=true deno run -A --env --node-modules-dir firestore_demo.ts",
     "dev:web": "deno run -A --env --node-modules-dir server.ts",
-    "dev:web:emu": "USE_FIREBASE_EMULATOR=true deno run -A --env --node-modules-dir server.ts"
+    "dev:web:emu": "USE_FIREBASE_EMULATOR=true deno run -A --env --node-modules-dir server.ts",
+    "clean": "rm -rf dist",
+    "build": "deno task clean && mkdir -p dist && cp -r public dist/public && deno bundle server.ts dist/server.js",
+    "preview": "deno run -A --env --node-modules-dir dist/server.js",
+    "deploy": "DEPLOY_PROJECT=${DEPLOY_PROJECT:-your-project-name} deployctl deploy --project=$DEPLOY_PROJECT dist/server.js"
   },
   "imports": {
     "@std/assert": "jsr:@std/assert@1",

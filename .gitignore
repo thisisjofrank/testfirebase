@@ -5,6 +5,7 @@ deno_dir/
 
 # npm interop (Deno --node-modules-dir)
 node_modules/
+dist/
 
 # Environment variables
 .env

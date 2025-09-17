@@ -51,12 +51,54 @@ deno task demo:firestore:emu
 
 You'll see logs for Create, Read, Update, Delete against `dinosaurs` collection.
 
+## Run the web app
+
+Start a small server that serves the UI and exposes a REST API backed by Firestore:
+
+```bash
+deno task dev:web
+```
+
+Against local emulators:
+
+```bash
+deno task dev:web:emu
+```
+
+Open <http://localhost:8000>
+
+## Build for Deno Deploy
+
+This project includes a simple build step that bundles the server and copies static assets to `dist/`.
+
+```bash
+deno task build
+```
+
+Preview the bundle locally:
+
+```bash
+deno task preview
+```
+
+Deploy with `deployctl` (set your project name):
+
+```bash
+DEPLOY_PROJECT=my-deploy-project deno task deploy
+```
+
+Notes:
+
+- Deno Deploy doesn’t support traditional Node.js `node_modules`; this project uses npm:firebase via Deno’s npm compatibility, which works in Deploy.
+- Ensure your Firebase credentials are available as environment variables in your Deploy project (Settings → Environment Variables) or switch to emulator connections for staging purposes.
+
 ## Files
 
 - `firebase.ts`: Initializes Firebase app, Auth, Firestore. Supports emulators via env flags.
 - `firestore_demo.ts`: Runs CRUD demo with anonymous auth.
 - `.env.example`: Template env file.
 - `deno.json`: Task to run demo and npm:firebase import mapping.
+  - dev:web, dev:web:emu, build, preview, deploy
 
 ## Notes
 
