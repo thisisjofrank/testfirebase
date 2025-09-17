@@ -1,0 +1,33 @@
+# Deno / TypeScript
+coverage/
+.deno/
+deno_dir/
+
+# npm interop (Deno --node-modules-dir)
+node_modules/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Firebase / Emulators
+firebase-debug.log*
+.firebase/
+emulator-data/
+firestore_export/
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors/IDEs
+.idea/
+.history/
+
+# Misc caches
+.eslintcache
